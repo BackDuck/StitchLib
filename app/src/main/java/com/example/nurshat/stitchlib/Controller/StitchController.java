@@ -42,7 +42,7 @@ public class StitchController {
         ShareData.config = config;
         this.listener = ShareData.config.getListener();
         EventBus.getDefault().register(this);
-        ShareData.images.clear();
+        ShareData.images = null;
     }
 
     public void start() {
