@@ -18,6 +18,9 @@ public class StitchConfig {
     private int quality;
     private int limitPickPhoto;
     private int maxImgHeight;
+    private String resultSavePath;
+    private boolean saveResult;
+    private String resultImageName;
 
     public StitchConfig() {
         waveCorrect = true;
@@ -27,6 +30,8 @@ public class StitchConfig {
         maxImgWidth = 640;
         limitPickPhoto = 10;
         quality = 75;
+        saveResult = true;
+        resultImageName = "stitch_result";
     }
 
     public int getQuality() {
@@ -115,4 +120,30 @@ public class StitchConfig {
         return maxImgHeight;
     }
 
+    public String getResultSavePath() {
+        return resultSavePath;
+    }
+
+    public StitchConfig setResultSavePath(String resultSavePath) {
+        this.resultSavePath = resultSavePath;
+        return this;
+    }
+
+    public boolean isSaveResult() {
+        return saveResult;
+    }
+
+    public StitchConfig setSaveResult(boolean saveResult) {
+        this.saveResult = saveResult;
+        return this;
+    }
+
+    public String getResultImageName() {
+        return resultImageName;
+    }
+
+    public StitchConfig setResultImageName(String resultImageName) {
+        this.resultImageName = resultImageName;
+        return this;
+    }
 }

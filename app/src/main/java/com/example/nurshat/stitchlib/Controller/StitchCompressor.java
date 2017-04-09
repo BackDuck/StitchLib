@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.os.Environment;
 
 import com.example.nurshat.stitchlib.Model.ShareData;
+import com.example.nurshat.stitchlib.Model.StitchConfig;
 
 import java.io.File;
 
@@ -16,18 +17,20 @@ import id.zelory.compressor.Compressor;
 
 public class StitchCompressor {
     private Context context;
+    private StitchConfig config;
 
     public static final String PATH_TO_COMPRESS_IMAGES = Environment.getExternalStorageDirectory().getAbsolutePath() + "/tempx";
 
     public StitchCompressor(Context context) {
         this.context = context;
+        this.config = ShareData.config;
     }
 
     public void compress(String path){
         File compressedImage = new Compressor.Builder(context)
-                .setMaxWidth(640)
-                .setMaxHeight(480)
-                .setQuality(75)
+                .setMaxWidth(config.getMaxImgWidth())
+                .setMaxHeight(config.getMaxImgHeight())
+                .setQuality(config.getQuality())
                 .setCompressFormat(Bitmap.CompressFormat.JPEG)
                 .setDestinationDirectoryPath(PATH_TO_COMPRESS_IMAGES)
                 .build()

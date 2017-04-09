@@ -25,7 +25,7 @@ public class ImagePickerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_image_picker);
 
         GalleryConfig config = new GalleryConfig.Build()
-                .limitPickPhoto(15)
+                .limitPickPhoto(ShareData.config.getLimitPickPhoto())
                 .singlePhoto(false)
                 .hintOfPick("this is pick hint")
                 .filterMimeTypes(new String[]{"image/*"})

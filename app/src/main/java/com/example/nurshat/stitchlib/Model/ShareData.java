@@ -13,4 +13,5 @@ public class ShareData {
    public static List<String> images = null;
    public static ArrayList<String> CompressImages = new ArrayList<>();
    public static Bitmap result = null;
+   public static StitchConfig config = null;
 }

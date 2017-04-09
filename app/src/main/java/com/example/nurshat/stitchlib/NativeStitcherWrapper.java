@@ -8,6 +8,9 @@ import org.opencv.core.Mat;
 
 import java.util.List;
 
+import rx.Observable;
+import rx.Subscriber;
+
 public class NativeStitcherWrapper {
     private static final String TAG = "Stitcher::NativeStitch";
 
@@ -15,6 +18,7 @@ public class NativeStitcherWrapper {
      * @param inputs      : the images to stitch together
      * @param waveCorrect : whether to use the built-in wave correction
      * @param multiBand   : whether to use multi-band or feather blending
+     * @param st
      * @return the stitched image
      */
     public static void stitch(List<Mat> inputs, boolean waveCorrect, boolean multiBand, Stitcher st) {
@@ -27,10 +31,8 @@ public class NativeStitcherWrapper {
 
         Mat result = new Mat();
         NativeStitch(imgArr, result.getNativeObjAddr(), waveCorrect, multiBand);
-        st.complete(result);
         Log.i(TAG, "done with stitching");
-
-        //return result;
+        st.complete(result);
     }
 
     private static native void NativeStitch(Mat imgs[], long resultMatAddr, boolean waveCorrect, boolean multiBand);
