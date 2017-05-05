@@ -26,6 +26,7 @@ public class FileController {
     public void saveImage(Bitmap img) {
         File file = new File(ShareData.config.getResultSavePath() == null ? PATH_TO_SAVE_RESULT : ShareData.config.getResultSavePath(), ShareData.config.getResultImageName() + ".jpg");
         file.getParentFile().mkdirs();
+        ShareData.resultPath = file.getAbsolutePath();
 
         try {
             FileOutputStream fos = null;

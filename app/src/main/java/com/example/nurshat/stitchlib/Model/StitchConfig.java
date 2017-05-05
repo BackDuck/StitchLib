@@ -21,6 +21,7 @@ public class StitchConfig {
     private String resultSavePath;
     private boolean saveResult;
     private String resultImageName;
+    private boolean useDefViewer;
 
     public StitchConfig() {
         waveCorrect = true;
@@ -32,6 +33,7 @@ public class StitchConfig {
         quality = 75;
         saveResult = true;
         resultImageName = "stitch_result";
+        useDefViewer = true;
     }
 
     public int getQuality() {
@@ -144,6 +146,15 @@ public class StitchConfig {
 
     public StitchConfig setResultImageName(String resultImageName) {
         this.resultImageName = resultImageName;
+        return this;
+    }
+
+    public boolean isUseDefViewer() {
+        return useDefViewer;
+    }
+
+    public StitchConfig setUseDefViewer(boolean useDefViewer) {
+        this.useDefViewer = useDefViewer;
         return this;
     }
 }

@@ -9,6 +9,8 @@ import com.example.nurshat.stitchlib.ImagePickerActivity;
 import com.example.nurshat.stitchlib.Model.Errors;
 import com.example.nurshat.stitchlib.Model.ShareData;
 import com.example.nurshat.stitchlib.Model.StitchConfig;
+import com.example.nurshat.stitchlib.PanoramViewActivity;
+import com.example.nurshat.stitchlib.SharedData;
 import com.example.nurshat.stitchlib.StitchInterface;
 
 import org.greenrobot.eventbus.EventBus;
@@ -48,11 +50,11 @@ public class StitchController {
     public void start() {
         if (ShareData.config.isPickImages()) {
             context.startActivity(new Intent(context, ImagePickerActivity.class));
-        }else{
-            if(ShareData.config.getImages().size()>1) {
+        } else {
+            if (ShareData.config.getImages().size() > 1) {
                 ShareData.images = ShareData.config.getImages();
                 compress();
-            }else {
+            } else {
                 onErrorEvent(Errors.IMAGES_NOT_FOUND);
             }
         }
@@ -77,7 +79,12 @@ public class StitchController {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onSuccsesEvent(Bitmap result) {
         EventBus.getDefault().unregister(this);
-        listener.stitchSuccessListener(result);
+        if (ShareData.config.isUseDefViewer()) {
+            context.startActivity(new Intent(context, PanoramViewActivity.class));
+        } else {
+            listener.stitchSuccessListener(result);
+        }
+
     }
 
     public void compress() {
@@ -96,6 +103,7 @@ public class StitchController {
                 .subscribe(new Subscriber<Object>() {
                     @Override
                     public void onCompleted() {
+
                         stitch();
                     }
 

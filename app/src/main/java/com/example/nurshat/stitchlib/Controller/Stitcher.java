@@ -54,8 +54,8 @@ public class Stitcher {
                 case LoaderCallbackInterface.SUCCESS: {
                     Log.i(TAG, "OpenCV loaded successfully");
                     System.loadLibrary("native-lib");
-                    start();
                     onCVStart = true;
+                    start();
                 }
                 break;
                 default: {
