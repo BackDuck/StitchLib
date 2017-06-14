@@ -48,6 +48,7 @@ public class StitchController {
     }
 
     public void start() {
+        System.out.println("-->>" + ShareData.config.toString());
         if (ShareData.config.isPickImages()) {
             context.startActivity(new Intent(context, ImagePickerActivity.class));
         } else {

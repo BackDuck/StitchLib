@@ -157,4 +157,19 @@ public class StitchConfig {
         this.useDefViewer = useDefViewer;
         return this;
     }
+    public String toString(){
+        String config =
+                  "Wave Correct = " + waveCorrect + "\n"
+                + "Multiband Blender = " + multibandBlender + "\n"
+                + "Deafault image picker = " + pickImages + "\n"
+                + "Max image width = " + maxImgWidth + "\n"
+                + "Max image height = " + maxImgHeight + "\n"
+                + "Image quality = " + quality + "\n"
+                + "Result save path = " + resultSavePath + "\n"
+                + "Save result = " + saveResult + "\n"
+                + "Pick limit = " + limitPickPhoto + "\n"
+                + "Result image name = " + resultImageName + "\n"
+                + "Default image viewer = " + useDefViewer + "\n";
+        return config;
+    }
 }

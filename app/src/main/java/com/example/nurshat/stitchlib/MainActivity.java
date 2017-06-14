@@ -18,6 +18,9 @@ import com.example.nurshat.stitchlib.Model.StitchConfig;
 
 import org.opencv.android.BaseLoaderCallback;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SuppressWarnings("deprecation")
 public class MainActivity extends AppCompatActivity implements StitchInterface {
 
@@ -30,16 +33,18 @@ public class MainActivity extends AppCompatActivity implements StitchInterface {
         setContentView(R.layout.main_activity_layout);
         tv = (TextView) findViewById(R.id.progress);
         pb = (ProgressBar) findViewById(R.id.progressBar2);
+        List<String> images = new ArrayList<>();
 
         StitchConfig config = new StitchConfig();
         config.useDefaultImagePicker(true)
                 .useMultibandBlender(true)
-                .useWaveCorrect(true)
+                .useWaveCorrect(false)
+                .setImages(images)
                 .setListener(this)
-                .setLimitPickPhoto(15)
-                .setQuality(75)
-                .setMaxImgHeight(480)
-                .setMaxImgWidth(640);
+                .setLimitPickPhoto(25)
+                .setQuality(100)
+                .setMaxImgHeight(720)
+                .setMaxImgWidth(1280);
 
         StitchController sController = new StitchController(MainActivity.this, config);
         sController.start();
